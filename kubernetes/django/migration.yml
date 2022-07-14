@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: alisoltanics/vision:0.7
+          image: alisoltanics/vision:1.1
           command: ['python', 'manage.py', 'migrate']
           env:
             - name: POSTGRES_USER
