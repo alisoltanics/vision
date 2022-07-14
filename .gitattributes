@@ -1,1 +1,1 @@
-kubernetes.django.f.yml filter=git-crypt diff=git-crypt
+f.yml filter=git-crypt diff=git-crypt
