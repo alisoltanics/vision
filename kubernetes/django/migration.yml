@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: alisoltanics/vision:0.3
+          image: alisoltanics/vision:0.7
           command: ['python', 'manage.py', 'migrate']
           env:
             - name: POSTGRES_USER
@@ -22,11 +22,17 @@ spec:
                   name: postgres-credentials
                   key: password
 
-            - name: POSTGRES_DB
+            - name: POSTGRES_NAME
               value: postgres
 
             - name: DJANGO_SETTINGS_MODULE
               value: 'vision.settings'
+
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: django-secrets
+                  key: secret_key
 
       restartPolicy: Never
   backoffLimit: 5

@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minikube-ingress
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - minikube.local
+    secretName: minikube-secret
+  rules:
+  - host: minikube.local
+    http:
+      paths:
+      - path: /admin/
+        pathType: Prefix
+        backend:
+          service:
+            name: kubernetes-django-service
+            port:
+              number: 8000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubernetes-django-service
+            port:
+              number: 8000

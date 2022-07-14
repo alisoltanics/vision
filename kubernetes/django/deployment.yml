@@ -15,7 +15,7 @@ spec:
       containers:
         - name: backend
           imagePullPolicy: IfNotPresent
-          image: alisoltanics/vision:0.3
+          image: alisoltanics/vision:0.7
           command: ["./manage.py", "runserver", "0.0.0.0:8000"]
           # livenessProbe:
           #   httpGet:
@@ -40,7 +40,7 @@ spec:
                   name: django-secrets
                   key: secret_key
 
-            - name: POSTGRES_DB
+            - name: POSTGRES_NAME
               value: postgres
 
             - name: POSTGRES_USER
